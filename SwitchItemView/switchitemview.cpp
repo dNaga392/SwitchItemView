@@ -19,7 +19,7 @@ SwitchItemView::~SwitchItemView()/*{{{*/
 {
 	qDebug("%s, %d: SwitchItemView::~SwitchItemView()", __FILE__, __LINE__);
 }/*}}}*/
-//-------- constructor/destructor --------S
+//-------- constructor/destructor --------E
 
 //-------- public --------S
 //-------- getter/setter --------S
@@ -43,20 +43,20 @@ void SwitchItemView::addStretch()/*{{{*/
 //-------- public --------E
 
 //-------- slots --------S
-void SwitchItemView::on_checkBox_stateChanged(int state)/*{{{*/
-{
-	qDebug("%s, %d: on_checkBox_stateChanged(int state=[%d])", __FILE__, __LINE__, state);
-	if(state == Qt::Checked)
-	{
-		qDebug("%s, %d: show itemWidget", __FILE__, __LINE__);
-		itemWidget->show();
-	}
-	else
-	{
-		qDebug("%s, %d: hide itemWidget", __FILE__, __LINE__);
-		itemWidget->hide();
-	}
-}/*}}}*/
+////void SwitchItemView::on_checkBox_stateChanged(int state)/*{{{*/
+////{
+////	qDebug("%s, %d: on_checkBox_stateChanged(int state=[%d])", __FILE__, __LINE__, state);
+////	if(state == Qt::Checked)
+////	{
+////		qDebug("%s, %d: show itemWidget", __FILE__, __LINE__);
+////		itemWidget->show();
+////	}
+////	else
+////	{
+////		qDebug("%s, %d: hide itemWidget", __FILE__, __LINE__);
+////		itemWidget->hide();
+////	}
+////}/*}}}*/
 //-------- slots --------E
 
 //-------- private --------S
@@ -64,6 +64,8 @@ void SwitchItemView::setupUi()/*{{{*/
 {
 	Ui::SwitchItemViewWidget::setupUi(this);
 	itemWidget->hide();
+	QObject::connect(checkBox, SIGNAL(toggled(bool))
+			,itemWidget, SLOT(setVisible(bool)));
 }/*}}}*/
 void SwitchItemView::setupUi(const QString &text)/*{{{*/
 {

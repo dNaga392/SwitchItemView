@@ -21,7 +21,7 @@ public:
 	void addItem(QWidget *item);
 	void addStretch();
 private slots:
-	void on_checkBox_stateChanged(int state);
+////	void on_checkBox_stateChanged(int state);
 private:
 	void setupUi();
 	void setupUi(const QString &text);
